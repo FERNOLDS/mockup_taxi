@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taxi — Declara tus impuestos con IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-t">T</span><span class="logo-axi">axi</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#impuestos">Impuestos con IA</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+      </ul>
+      <a href="https://app.efecompany.cl/login" class="btn btn-nav" target="_blank" rel="noopener">Ingresar →</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-glow hero-glow--1"></div>
+      <div class="hero-glow hero-glow--2"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-particles" id="particles"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge reveal-up">
+          <span class="badge-dot"></span>
+          Integrado con SII · MercadoPago · SumUp
+        </div>
+        <h1 class="hero-h1 reveal-up" style="--delay:.1s">
+          Declara tus<br />impuestos con IA.<br />
+          <span class="text-gradient">Sin contador.</span>
+        </h1>
+        <p class="hero-sub reveal-up" style="--delay:.2s">
+          Taxi se conecta a tus ventas, calcula tu IVA, prepara tu Renta y
+          presenta tus Declaraciones Juradas — solo. Renata, tu asistente tributaria,
+          te guía en cada paso.
+        </p>
+        <div class="hero-actions reveal-up" style="--delay:.3s">
+          <a href="https://app.efecompany.cl/login" class="btn btn-primary" target="_blank" rel="noopener">
+            Empezar gratis
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#como-funciona" class="btn btn-ghost">Ver cómo funciona</a>
+        </div>
+        <div class="hero-trust reveal-up" style="--delay:.4s">
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 3.5L5.5 9.5 2.5 6.5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sin instalación
+          </div>
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 3.5L5.5 9.5 2.5 6.5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Normativa SII vigente
+          </div>
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 3.5L5.5 9.5 2.5 6.5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Soporte siempre disponible
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAT MOCK -->
+      <div class="hero-visual reveal-right" style="--delay:.2s">
+        <div class="chat-mock">
+          <div class="chat-topbar">
+            <div class="chat-avatar"><span class="chat-avatar-initial">R</span><span class="chat-status-dot"></span></div>
+            <div class="chat-meta"><strong>Renata</strong><span>Asistente tributaria · IA</span></div>
+          </div>
+          <div class="chat-body">
+            <div class="chat-msg chat-msg--bot">
+              Hola Felipe. Revisé tus ventas de mayo — tienes $4.280.000 entre MercadoPago, SumUp y facturas.
+            </div>
+            <div class="chat-msg chat-msg--user">¿Cuánto IVA debo pagar este mes?</div>
+            <div class="chat-msg chat-msg--bot">
+              Tu IVA de mayo es <strong>$437.200</strong>. Vence el 12 de junio. ¿Quieres el link de pago al SII?
+            </div>
+            <div class="chat-msg chat-msg--user">Sí, pásamelo</div>
+            <div class="chat-msg chat-msg--bot chat-msg--action">
+              <span class="chat-link-icon">↗</span>
+              <div><strong>Link de pago SII listo</strong><span>F29 Mayo 2025 · $437.200</span></div>
+            </div>
+            <div class="chat-typing"><span></span><span></span><span></span></div>
+          </div>
+          <div class="chat-input-bar">
+            <div class="chat-input-fake">Pregúntale a Renata...</div>
+            <button class="chat-send">→</button>
+          </div>
+        </div>
+        <div class="float-card float-card--1">
+          <div class="fc-icon">✓</div>
+          <div class="fc-text"><strong>F29 enviado al SII</strong><span>Hace 2 minutos · Automático</span></div>
+        </div>
+        <div class="float-card float-card--2">
+          <div class="fc-icon">⚡</div>
+          <div class="fc-text"><strong>1.240 ventas importadas</strong><span>MercadoPago · Mayo 2025</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Desplázate para explorar</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS BAR -->
+  <section class="integrations-bar">
+    <div class="container integrations-inner">
+      <span class="int-label">Conectamos con tus herramientas</span>
+      <div class="int-logos">
+        <div class="int-logo"><div class="int-logo-icon int-logo-icon--mp">MP</div><span>MercadoPago</span></div>
+        <div class="int-divider"></div>
+        <div class="int-logo"><div class="int-logo-icon int-logo-icon--su">SU</div><span>SumUp</span></div>
+        <div class="int-divider"></div>
+        <div class="int-logo"><div class="int-logo-icon int-logo-icon--sii">SII</div><span>SII Chile</span></div>
+        <div class="int-divider"></div>
+        <div class="int-logo"><div class="int-logo-icon int-logo-icon--be">BE</div><span>BancoEstado</span></div>
+        <div class="int-divider"></div>
+        <div class="int-logo"><div class="int-logo-icon int-logo-icon--pv">PV</div><span>Previred</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="how" id="como-funciona">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal-up">Cómo funciona</div>
+        <h2 class="section-h2 reveal-up" style="--delay:.1s">
+          Del cobro a la declaración,<br />sin tocar nada
+        </h2>
+        <p class="section-sub reveal-up" style="--delay:.2s">
+          Taxi cierra el ciclo tributario completo por ti.
+          Tú solo confirmas cuando Renata te lo pide.
+        </p>
+      </div>
+
+      <div class="how-steps">
+
+        <div class="how-step reveal-up">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Conecta tus ventas</h3>
+            <p>Vincula MercadoPago, SumUp o sube tus facturas. Taxi importa todo automáticamente y descarga tu RCV directo del SII. Sin digitación, sin planillas.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-mock">
+              <div class="sm-connect-row">
+                <div class="sm-connect-item sm-connect-item--active"><span>⚡</span>MercadoPago<div class="sm-connect-badge">Conectado</div></div>
+                <div class="sm-connect-item sm-connect-item--active"><span>⚡</span>SumUp<div class="sm-connect-badge">Conectado</div></div>
+                <div class="sm-connect-item"><span>⚡</span>SII RCV<div class="sm-connect-badge sm-connect-badge--pending">Sincronizando</div></div>
+              </div>
+              <div class="sm-stats-mini">
+                <div><span>Ventas importadas</span><strong>1.240</strong></div>
+                <div><span>Período</span><strong>Mayo 2025</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="how-connector reveal-up" style="--delay:.1s"><div class="connector-line"></div></div>
+
+        <div class="how-step how-step--reverse reveal-up" style="--delay:.1s">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>La IA calcula</h3>
+            <p>Renata procesa compras, ventas y movimientos. Determina tu IVA a pagar, base imponible para Renta y prepara tus Declaraciones Juradas. Sin errores de cálculo.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-mock">
+              <div class="sm-calc-row">
+                <div class="sm-calc-item">
+                  <span class="sm-calc-label">Débito fiscal</span>
+                  <span class="sm-calc-value">$814.200</span>
+                </div>
+                <div class="sm-calc-op">−</div>
+                <div class="sm-calc-item">
+                  <span class="sm-calc-label">Crédito fiscal</span>
+                  <span class="sm-calc-value">$377.000</span>
+                </div>
+                <div class="sm-calc-op">=</div>
+                <div class="sm-calc-item sm-calc-item--result">
+                  <span class="sm-calc-label">IVA a pagar</span>
+                  <span class="sm-calc-value sm-calc-value--yellow">$437.200</span>
+                </div>
+              </div>
+              <div class="sm-ai-row"><span>✦</span> Renata verificó todos los valores</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="how-connector reveal-up" style="--delay:.2s"><div class="connector-line"></div></div>
+
+        <div class="how-step reveal-up" style="--delay:.2s">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Declara con un clic</h3>
+            <p>Renata te presenta el resumen y el link de pago al SII. Tú confirmas y listo — la declaración queda enviada. Sin formularios, sin errores, sin espera.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-mock">
+              <div class="sm-report-row">
+                <div class="sm-report-label">F29 IVA Mayo 2025</div>
+                <div class="sm-report-badge sm-report-badge--yellow">Listo para enviar</div>
+              </div>
+              <div class="sm-report-row">
+                <div class="sm-report-label">Operación Renta 2025</div>
+                <div class="sm-report-badge">Preparado</div>
+              </div>
+              <div class="sm-report-row">
+                <div class="sm-report-label">DDJJ 1887 Honorarios</div>
+                <div class="sm-report-badge">Preparado</div>
+              </div>
+              <div class="sm-btn">Enviar al SII →</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RENATA -->
+  <section class="renata-section" id="impuestos">
+    <div class="container renata-inner">
+      <div class="renata-text reveal-left">
+        <div class="section-label">Renata — Tu asistente tributaria</div>
+        <h2>Una conversación<br />reemplaza al contador</h2>
+        <p>
+          Renata sabe lo que vendes, cuánto compras y qué debes al SII.
+          Pregúntale en lenguaje natural — ella actúa, calcula y declara.
+          Disponible las 24 horas, los 7 días.
+        </p>
+        <div class="renata-capabilities">
+          <div class="renata-cap">
+            <div class="renata-cap-icon">💬</div>
+            <div><strong>"¿Cuánto IVA debo este mes?"</strong><span>Calcula, genera el link y lo envía al SII</span></div>
+          </div>
+          <div class="renata-cap">
+            <div class="renata-cap-icon">💬</div>
+            <div><strong>"¿Cuánto le pago a mi empleado?"</strong><span>Genera la liquidación con descuentos legales</span></div>
+          </div>
+          <div class="renata-cap">
+            <div class="renata-cap-icon">💬</div>
+            <div><strong>"¿Está pagado el IVA de abril?"</strong><span>Verifica el estado y entrega el comprobante</span></div>
+          </div>
+          <div class="renata-cap">
+            <div class="renata-cap-icon">💬</div>
+            <div><strong>"Necesito hablar con alguien"</strong><span>Agenda una reunión con el equipo de soporte</span></div>
+          </div>
+        </div>
+        <a href="https://renata.efecompany.cl/" class="btn btn-primary" target="_blank" rel="noopener">
+          Hablar con Renata →
+        </a>
+      </div>
+      <div class="renata-visual reveal-right" style="--delay:.1s">
+        <div class="renata-chat">
+          <div class="chat-topbar">
+            <div class="chat-avatar"><span class="chat-avatar-initial">R</span><span class="chat-status-dot"></span></div>
+            <div class="chat-meta"><strong>Renata</strong><span>Siempre disponible · 24/7</span></div>
+          </div>
+          <div class="chat-body renata-chat-body">
+            <div class="chat-msg chat-msg--user">¿Cuánto IVA debo de mayo?</div>
+            <div class="chat-msg chat-msg--bot">Revisé tus ventas. El IVA a pagar es <strong>$437.200</strong>, vence el 12 de junio.</div>
+            <div class="chat-msg chat-msg--user">Mándame el link de pago</div>
+            <div class="chat-msg chat-msg--bot chat-msg--action">
+              <span class="chat-link-icon">↗</span>
+              <div><strong>Link de pago generado</strong><span>F29 Mayo · $437.200 · SII</span></div>
+            </div>
+            <div class="chat-msg chat-msg--user">¿Y la declaración de renta?</div>
+            <div class="chat-msg chat-msg--bot">Está lista. La Operación Renta 2025 tiene todos tus datos. ¿La revisamos o la envío directo?</div>
+          </div>
+        </div>
+        <!-- Floating metric -->
+        <div class="renata-metric">
+          <div class="rm-icon">⚡</div>
+          <div class="rm-text">
+            <strong>Respuesta en segundos</strong>
+            <span>No esperes turnos ni citas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPUESTOS CON IA -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal-up">Impuestos con IA</div>
+        <h2 class="section-h2 reveal-up" style="--delay:.1s">
+          Declara todo sin salir<br />de Taxi
+        </h2>
+        <p class="section-sub reveal-up" style="--delay:.2s">
+          IVA mensual, Renta anual y Declaraciones Juradas.
+          La IA hace el trabajo — tú solo confirmas.
+        </p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card feature-card--wide reveal-up">
+          <div class="fc-header">
+            <div class="fc-icon-box fc-icon-box--yellow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 14l2 2 4-4" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#ffd700" stroke-width="1.5"/></svg>
+            </div>
+            <div class="fc-tag">Mensual · Automático</div>
+          </div>
+          <h3>Declaración de IVA — F29</h3>
+          <p>Taxi cruza tus compras, ventas, MercadoPago y SumUp. Renata calcula el débito y crédito fiscal, genera el F29 y te entrega el link de pago al SII. Tú solo confirmas. Cada mes, sin falta.</p>
+          <div class="fc-pills">
+            <span>Débito fiscal automático</span>
+            <span>Crédito fiscal</span>
+            <span>Link pago SII</span>
+            <span>Comprobante PDF</span>
+          </div>
+        </div>
+
+        <div class="feature-card reveal-up" style="--delay:.1s">
+          <div class="fc-header">
+            <div class="fc-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="fc-tag">Anual</div>
+          </div>
+          <h3>Operación Renta</h3>
+          <p>Al cierre del año todos tus datos ya están en Taxi. La declaración de Renta se prepara sola — Renata te lleva paso a paso hasta enviarla al SII.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="--delay:.15s">
+          <div class="fc-header">
+            <div class="fc-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#ffd700" stroke-width="1.5"/><polyline points="14 2 14 8 20 8" stroke="#ffd700" stroke-width="1.5"/><line x1="16" y1="13" x2="8" y2="13" stroke="#ffd700" stroke-width="1.5"/><line x1="16" y1="17" x2="8" y2="17" stroke="#ffd700" stroke-width="1.5"/></svg>
+            </div>
+            <div class="fc-tag">Anual</div>
+          </div>
+          <h3>Declaraciones Juradas</h3>
+          <p>DDJJ de honorarios, retenciones y otras obligaciones informativas. Generadas con los datos de tu plataforma y presentadas directamente al SII.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="--delay:.1s">
+          <div class="fc-header">
+            <div class="fc-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#ffd700" stroke-width="1.5"/><path d="M2 10h20" stroke="#ffd700" stroke-width="1.5"/><circle cx="7" cy="15" r="1" fill="#ffd700"/><path d="M11 15h6" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <h3>Libros contables SII</h3>
+          <p>RCV, Libro Caja e Ingresos y Egresos en el formato oficial del SII. Se generan solos con cada movimiento que registras. Sin preparación manual.</p>
+        </div>
+
+        <div class="feature-card feature-card--wide reveal-up" style="--delay:.15s">
+          <div class="fc-header">
+            <div class="fc-icon-box fc-icon-box--yellow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="fc-tag">Cero digitación</div>
+          </div>
+          <h3>Tus ventas entran solas — IVA calculado al instante</h3>
+          <p>Cobras con MercadoPago o SumUp y Taxi importa cada venta automáticamente. El sistema ya sabe cuánto vendiste, cuánto recibiste y cuánto IVA corresponde — antes de que se lo preguntes.</p>
+          <div class="fc-pills">
+            <span>MercadoPago</span>
+            <span>SumUp</span>
+            <span>Facturas electrónicas SII</span>
+            <span>Boletas de ventas</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="modules" id="modulos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal-up">Todo en un solo lugar</div>
+        <h2 class="section-h2 reveal-up" style="--delay:.1s">
+          Más que impuestos —<br />gestión completa de tu empresa
+        </h2>
+        <p class="section-sub reveal-up" style="--delay:.2s">
+          Taxi incluye todos los módulos que necesitas para mantener
+          tu empresa en orden y tus declaraciones siempre al día.
+        </p>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card reveal-up" style="--delay:.0s">
+          <div class="module-icon">📥</div>
+          <div class="module-name">Compras</div>
+          <div class="module-desc">Registra facturas de compra, boletas y gastos. El crédito fiscal se calcula automáticamente para tu declaración de IVA mensual.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.05s">
+          <div class="module-icon">📤</div>
+          <div class="module-name">Ventas</div>
+          <div class="module-desc">Carga facturas de venta, boletas electrónicas y comprobantes de caja. El débito fiscal queda registrado al instante.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.1s">
+          <div class="module-icon">📊</div>
+          <div class="module-name">Contabilidad</div>
+          <div class="module-desc">Asientos manuales, balance general, libro mayor y cierres mensual y anual. Tu contabilidad siempre actualizada y lista para exportar.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.15s">
+          <div class="module-icon">👥</div>
+          <div class="module-name">RRHH</div>
+          <div class="module-desc">Liquidaciones de sueldo, contratos, finiquitos, pago de Previred y comunicaciones a la Dirección del Trabajo, todo automatizado.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.2s">
+          <div class="module-icon">🏦</div>
+          <div class="module-name">Conciliación Bancaria</div>
+          <div class="module-desc">Importa cartolas de BancoEstado y otros bancos. El sistema cruza automáticamente los movimientos con tu contabilidad y detecta diferencias.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.25s">
+          <div class="module-icon">📋</div>
+          <div class="module-name">Libro Caja SII</div>
+          <div class="module-desc">Genera el Libro de Ingresos y Egresos en el formato oficial exigido por el SII, listo para presentar sin preparación adicional.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.3s">
+          <div class="module-icon">🏢</div>
+          <div class="module-name">Arriendos</div>
+          <div class="module-desc">Gestiona tus propiedades en arriendo, registra ingresos mensuales y genera los documentos tributarios correspondientes para cada bien raíz.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.35s">
+          <div class="module-icon">🏷️</div>
+          <div class="module-name">Patentes</div>
+          <div class="module-desc">Control y seguimiento de patentes municipales y comerciales. Mantén tus permisos al día sin perder vencimientos importantes.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.4s">
+          <div class="module-icon">🤝</div>
+          <div class="module-name">Socios y Dividendos</div>
+          <div class="module-desc">Registro de socios y participaciones societarias. Gestiona la distribución de dividendos y sus implicancias tributarias de forma ordenada.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.45s">
+          <div class="module-icon">💳</div>
+          <div class="module-name">MercadoPago</div>
+          <div class="module-desc">Conecta tu cuenta y Taxi importa cada venta automáticamente. El IVA de tus cobros con tarjeta o QR se calcula solo, sin que toques nada.</div>
+        </div>
+        <div class="module-card reveal-up" style="--delay:.5s">
+          <div class="module-icon">⚡</div>
+          <div class="module-name">SumUp</div>
+          <div class="module-desc">Integración directa con tu terminal POS SumUp. Todas tus ventas presenciales entran a Taxi en tiempo real, sin digitación manual.</div>
+        </div>
+        <div class="module-card reveal-up module-card--highlight" style="--delay:.55s">
+          <div class="module-icon">🤖</div>
+          <div class="module-name">Renata IA</div>
+          <div class="module-desc">Tu asistente tributaria con IA disponible 24/7. Pregúntale cuánto IVA debes, pide tu link de pago o agenda una reunión — todo en una conversación.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="cta-bg"><div class="cta-glow"></div></div>
+    <div class="container cta-inner">
+      <div class="cta-badge reveal-up">Sin instalación · Acceso inmediato</div>
+      <h2 class="cta-h2 reveal-up" style="--delay:.1s">
+        Tu próximo IVA<br />lo declara la IA
+      </h2>
+      <p class="cta-sub reveal-up" style="--delay:.2s">
+        Conecta tus ventas hoy. Renata calcula tu IVA, prepara tu Renta
+        y declara todo sin que tengas que llamar a nadie.
+      </p>
+      <div class="cta-actions reveal-up" style="--delay:.3s">
+        <a href="https://app.efecompany.cl/login" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+          Empezar gratis
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 9h11M10 4.5l4.5 4.5L10 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="cta-fine reveal-up" style="--delay:.4s">Sin tarjeta de crédito · Sin instalación · Normativa SII vigente</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo logo--sm"><span class="logo-t">T</span><span class="logo-axi">axi</span></a>
+        <p>Impuestos con IA para<br />empresas chilenas.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Producto</div>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#impuestos">Impuestos con IA</a>
+          <a href="#modulos">Módulos</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Acceso</div>
+          <a href="https://app.efecompany.cl/login" target="_blank" rel="noopener">Ingresar</a>
+          <a href="https://app.efecompany.cl/login" target="_blank" rel="noopener">Registrarse</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2025 Taxi. Impuestos con IA para Chile.</span>
+        <span>SII · MercadoPago · SumUp · Previred</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
