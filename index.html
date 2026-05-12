@@ -123,15 +123,45 @@
     <div class="container integrations-inner">
       <span class="int-label">Conectamos con tus herramientas</span>
       <div class="int-logos">
-        <div class="int-logo"><div class="int-logo-icon int-logo-icon--mp">MP</div><span>MercadoPago</span></div>
+        <div class="int-logo">
+          <div class="int-logo-icon">
+            <img class="fc-logo-img" src="icons/mercadopago.png" alt="MercadoPago" data-webfb="https://www.google.com/s2/favicons?domain=mercadopago.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#00b1ea">MP</span>
+          </div>
+          <span>MercadoPago</span>
+        </div>
         <div class="int-divider"></div>
-        <div class="int-logo"><div class="int-logo-icon int-logo-icon--su">SU</div><span>SumUp</span></div>
+        <div class="int-logo">
+          <div class="int-logo-icon">
+            <img class="fc-logo-img" src="icons/sumup.png" alt="SumUp" data-webfb="https://www.google.com/s2/favicons?domain=sumup.com&sz=64">
+            <span class="fc-logo-txt" style="background:#111;border:1px solid rgba(255,215,0,.4)">SU</span>
+          </div>
+          <span>SumUp</span>
+        </div>
         <div class="int-divider"></div>
-        <div class="int-logo"><div class="int-logo-icon int-logo-icon--sii">SII</div><span>SII Chile</span></div>
+        <div class="int-logo">
+          <div class="int-logo-icon">
+            <img class="fc-logo-img" src="icons/sii.png" alt="SII Chile" data-webfb="https://www.google.com/s2/favicons?domain=sii.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#1a4a2e">SII</span>
+          </div>
+          <span>SII Chile</span>
+        </div>
         <div class="int-divider"></div>
-        <div class="int-logo"><div class="int-logo-icon int-logo-icon--be">BE</div><span>BancoEstado</span></div>
+        <div class="int-logo">
+          <div class="int-logo-icon">
+            <img class="fc-logo-img" src="icons/bancoestado.png" alt="BancoEstado" data-webfb="https://www.google.com/s2/favicons?domain=bancoestado.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#003d7a">BE</span>
+          </div>
+          <span>BancoEstado</span>
+        </div>
         <div class="int-divider"></div>
-        <div class="int-logo"><div class="int-logo-icon int-logo-icon--pv">PV</div><span>Previred</span></div>
+        <div class="int-logo">
+          <div class="int-logo-icon">
+            <img class="fc-logo-img" src="icons/previred.png" alt="Previred" data-webfb="https://www.google.com/s2/favicons?domain=previred.com&sz=64">
+            <span class="fc-logo-txt" style="background:#c8102e">PV</span>
+          </div>
+          <span>Previred</span>
+        </div>
       </div>
     </div>
   </section>
@@ -384,83 +414,173 @@
     </div>
   </section>
 
-  <!-- MODULES -->
-  <section class="modules" id="modulos">
+  <!-- FLOWCHART -->
+  <section class="flow-section" id="modulos">
+    <div class="flow-bg">
+      <div class="flow-orb flow-orb--1"></div>
+      <div class="flow-orb flow-orb--2"></div>
+    </div>
     <div class="container">
       <div class="section-header">
-        <div class="section-label reveal-up">Todo en un solo lugar</div>
+        <div class="section-label reveal-up">Arquitectura del sistema</div>
         <h2 class="section-h2 reveal-up" style="--delay:.1s">
-          Más que impuestos —<br />gestión completa de tu empresa
+          Todo conectado.<br />Renata lo entiende todo.
         </h2>
         <p class="section-sub reveal-up" style="--delay:.2s">
-          Taxi incluye todos los módulos que necesitas para mantener
-          tu empresa en orden y tus declaraciones siempre al día.
+          Haz clic en cualquier elemento para saber qué hace.
         </p>
       </div>
-      <div class="modules-grid">
-        <div class="module-card reveal-up" style="--delay:.0s">
-          <div class="module-icon">📥</div>
-          <div class="module-name">Compras</div>
-          <div class="module-desc">Registra facturas de compra, boletas y gastos. El crédito fiscal se calcula automáticamente para tu declaración de IVA mensual.</div>
+      <!-- FLOWCHART DIAGRAM -->
+      <div class="fc-diagram reveal-up" id="fcDiagram" style="--delay:.3s">
+        <svg class="fc-svg" id="fcSvg" aria-hidden="true"></svg>
+
+        <!-- LEFT: Source icons only (drop brand files into /icons/ to override) -->
+        <div class="fc-col fc-col--sources">
+          <button class="fc-src-icon" id="src-sii" data-fc="sii" title="SII Chile">
+            <img class="fc-logo-img" src="icons/sii.png" alt="SII Chile"
+                 data-webfb="https://www.google.com/s2/favicons?domain=sii.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#1a4a2e">Sii</span>
+          </button>
+          <button class="fc-src-icon" id="src-mp" data-fc="mp" title="MercadoPago">
+            <img class="fc-logo-img" src="icons/mercadopago.png" alt="MercadoPago"
+                 data-webfb="https://www.google.com/s2/favicons?domain=mercadopago.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#00b1ea">MP</span>
+          </button>
+          <button class="fc-src-icon" id="src-sumup" data-fc="sumup" title="SumUp">
+            <img class="fc-logo-img" src="icons/sumup.png" alt="SumUp"
+                 data-webfb="https://www.google.com/s2/favicons?domain=sumup.com&sz=64">
+            <span class="fc-logo-txt" style="background:#111;border:1px solid rgba(255,215,0,.4)">SU</span>
+          </button>
+          <button class="fc-src-icon" id="src-tuu" data-fc="tuu" title="Tuu">
+            <img class="fc-logo-img" src="icons/tuu.png" alt="Tuu"
+                 data-webfb="https://www.google.com/s2/favicons?domain=tuu.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#7c3aed">tuu</span>
+          </button>
+          <button class="fc-src-icon" id="src-banco" data-fc="banco" title="BancoEstado">
+            <img class="fc-logo-img" src="icons/bancoestado.png" alt="BancoEstado"
+                 data-webfb="https://www.google.com/s2/favicons?domain=bancoestado.cl&sz=64">
+            <span class="fc-logo-txt" style="background:#003d7a">BE</span>
+          </button>
+          <button class="fc-src-icon" id="src-previred" data-fc="previred" title="Previred">
+            <img class="fc-logo-img" src="icons/previred.png" alt="Previred"
+                 data-webfb="https://www.google.com/s2/favicons?domain=previred.com&sz=64">
+            <span class="fc-logo-txt" style="background:#c8102e">PV</span>
+          </button>
         </div>
-        <div class="module-card reveal-up" style="--delay:.05s">
-          <div class="module-icon">📤</div>
-          <div class="module-name">Ventas</div>
-          <div class="module-desc">Carga facturas de venta, boletas electrónicas y comprobantes de caja. El débito fiscal queda registrado al instante.</div>
+
+        <!-- CENTER: Taxi system box -->
+        <div class="fc-taxi-box" id="fcTaxiBox" data-fc="taxi">
+          <div class="fc-taxi-header">
+            <span class="logo-t">T</span><span class="logo-axi">axi</span>
+            <span class="fc-taxi-tag">Sistema</span>
+          </div>
+          <div class="fc-modules-wrap">
+            <button class="fc-mod" data-fc="contabilidad">📊 Contabilidad</button>
+            <button class="fc-mod" data-fc="rrhh">👥 RRHH</button>
+            <button class="fc-mod" data-fc="conciliacion">🏦 Conciliación</button>
+            <button class="fc-mod" data-fc="arriendos">🏢 Arriendos</button>
+            <button class="fc-mod" data-fc="patentes">🏷️ Patentes</button>
+          </div>
         </div>
-        <div class="module-card reveal-up" style="--delay:.1s">
-          <div class="module-icon">📊</div>
-          <div class="module-name">Contabilidad</div>
-          <div class="module-desc">Asientos manuales, balance general, libro mayor y cierres mensual y anual. Tu contabilidad siempre actualizada y lista para exportar.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.15s">
-          <div class="module-icon">👥</div>
-          <div class="module-name">RRHH</div>
-          <div class="module-desc">Liquidaciones de sueldo, contratos, finiquitos, pago de Previred y comunicaciones a la Dirección del Trabajo, todo automatizado.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.2s">
-          <div class="module-icon">🏦</div>
-          <div class="module-name">Conciliación Bancaria</div>
-          <div class="module-desc">Importa cartolas de BancoEstado y otros bancos. El sistema cruza automáticamente los movimientos con tu contabilidad y detecta diferencias.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.25s">
-          <div class="module-icon">📋</div>
-          <div class="module-name">Libro Caja SII</div>
-          <div class="module-desc">Genera el Libro de Ingresos y Egresos en el formato oficial exigido por el SII, listo para presentar sin preparación adicional.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.3s">
-          <div class="module-icon">🏢</div>
-          <div class="module-name">Arriendos</div>
-          <div class="module-desc">Gestiona tus propiedades en arriendo, registra ingresos mensuales y genera los documentos tributarios correspondientes para cada bien raíz.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.35s">
-          <div class="module-icon">🏷️</div>
-          <div class="module-name">Patentes</div>
-          <div class="module-desc">Control y seguimiento de patentes municipales y comerciales. Mantén tus permisos al día sin perder vencimientos importantes.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.4s">
-          <div class="module-icon">🤝</div>
-          <div class="module-name">Socios y Dividendos</div>
-          <div class="module-desc">Registro de socios y participaciones societarias. Gestiona la distribución de dividendos y sus implicancias tributarias de forma ordenada.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.45s">
-          <div class="module-icon">💳</div>
-          <div class="module-name">MercadoPago</div>
-          <div class="module-desc">Conecta tu cuenta y Taxi importa cada venta automáticamente. El IVA de tus cobros con tarjeta o QR se calcula solo, sin que toques nada.</div>
-        </div>
-        <div class="module-card reveal-up" style="--delay:.5s">
-          <div class="module-icon">⚡</div>
-          <div class="module-name">SumUp</div>
-          <div class="module-desc">Integración directa con tu terminal POS SumUp. Todas tus ventas presenciales entran a Taxi en tiempo real, sin digitación manual.</div>
-        </div>
-        <div class="module-card reveal-up module-card--highlight" style="--delay:.55s">
-          <div class="module-icon">🤖</div>
-          <div class="module-name">Renata IA</div>
-          <div class="module-desc">Tu asistente tributaria con IA disponible 24/7. Pregúntale cuánto IVA debes, pide tu link de pago o agenda una reunión — todo en una conversación.</div>
+
+        <!-- RIGHT: Renata brain -->
+        <button class="fc-renata-node" id="fcRenata" data-fc="renata">
+          <div class="fc-renata-ring fc-renata-ring--1"></div>
+          <div class="fc-renata-ring fc-renata-ring--2"></div>
+          <div class="fc-renata-core">
+            <svg class="fc-brain-svg" width="44" height="44" viewBox="0 0 56 56" fill="none">
+              <!-- left lobe -->
+              <path d="M28 7 C19 7 10 13 9 22 C8 31 13 39 20 42 C23 43 26 42 28 41 Z"
+                    fill="rgba(255,215,0,.1)" stroke="#ffd700" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- right lobe -->
+              <path d="M28 7 C37 7 46 13 47 22 C48 31 43 39 36 42 C33 43 30 42 28 41 Z"
+                    fill="rgba(255,215,0,.1)" stroke="#ffd700" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- top center dip -->
+              <path d="M22 7 C24 10 27 11 28 11 C29 11 32 10 34 7"
+                    stroke="#ffd700" stroke-width="1.1" fill="none" opacity=".45"/>
+              <!-- stem -->
+              <path d="M24 41 C26 46 30 46 32 41"
+                    stroke="#ffd700" stroke-width="1.3" fill="none" opacity=".55"/>
+              <!-- left sulci (folds) -->
+              <path d="M14 20 C17 18 20 21 17 23" stroke="rgba(255,215,0,.65)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M12 30 C15 28 18 31 15 33" stroke="rgba(255,215,0,.55)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M19 13 C22 12 23 16 20 15" stroke="rgba(255,215,0,.45)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+              <!-- right sulci -->
+              <path d="M42 20 C39 18 36 21 39 23" stroke="rgba(255,215,0,.65)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M44 30 C41 28 38 31 41 33" stroke="rgba(255,215,0,.55)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M37 13 C34 12 33 16 36 15" stroke="rgba(255,215,0,.45)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+              <!-- corpus callosum connection -->
+              <path d="M23 34 C25 32 31 32 33 34" stroke="#ffd700" stroke-width="1" fill="none" opacity=".5"/>
+              <!-- neural nodes -->
+              <circle cx="28" cy="17" r="2.6" fill="#ffd700"/>
+              <circle cx="19" cy="28" r="2"   fill="#ffd700" opacity=".9"/>
+              <circle cx="37" cy="28" r="2"   fill="#ffd700" opacity=".9"/>
+              <circle cx="24" cy="37" r="1.7" fill="#ffd700" opacity=".75"/>
+              <circle cx="32" cy="37" r="1.7" fill="#ffd700" opacity=".75"/>
+              <!-- synaptic connections -->
+              <line x1="28" y1="17" x2="19" y2="28" stroke="#ffd700" stroke-width="1"  opacity=".42"/>
+              <line x1="28" y1="17" x2="37" y2="28" stroke="#ffd700" stroke-width="1"  opacity=".42"/>
+              <line x1="19" y1="28" x2="24" y2="37" stroke="#ffd700" stroke-width=".9" opacity=".32"/>
+              <line x1="37" y1="28" x2="32" y2="37" stroke="#ffd700" stroke-width=".9" opacity=".32"/>
+              <line x1="24" y1="37" x2="32" y2="37" stroke="#ffd700" stroke-width=".9" opacity=".28"/>
+            </svg>
+          </div>
+          <div class="fc-renata-badges">
+            <span>IVA</span><span>Renta</span><span>DDJJ</span>
+          </div>
+          <span class="fc-renata-label">Renata IA</span>
+        </button>
+
+        <!-- FAR RIGHT: User avatar -->
+        <div class="fc-user-node" id="fcUser">
+          <div class="fc-user-avatar">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fc-av-bg" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+                <clipPath id="fc-av-clip"><circle cx="28" cy="28" r="28"/></clipPath>
+              </defs>
+              <!-- fondo -->
+              <circle cx="28" cy="28" r="28" fill="url(#fc-av-bg)"/>
+              <!-- camisa -->
+              <path d="M5 58 C5 44 14 40 28 40 C42 40 51 44 51 58Z"
+                    fill="#3730a3" clip-path="url(#fc-av-clip)"/>
+              <!-- cuello -->
+              <rect x="24.5" y="31" width="7" height="11" rx="3" fill="#c8875a" clip-path="url(#fc-av-clip)"/>
+              <!-- cara -->
+              <circle cx="28" cy="21" r="12" fill="#d4956a"/>
+              <!-- cabello -->
+              <path d="M16 22 C16 10 21 5 28 5 C35 5 40 10 40 22 C39 15 35 12 28 12 C21 12 17 15 16 22Z"
+                    fill="#1a0800"/>
+              <!-- lateral izq -->
+              <path d="M16 22 C15 26 15 30 17 34 C14.5 31 13.5 26 14 21Z"
+                    fill="#1a0800" clip-path="url(#fc-av-clip)"/>
+              <!-- lateral der -->
+              <path d="M40 22 C41 26 41 30 39 34 C41.5 31 42.5 26 42 21Z"
+                    fill="#1a0800" clip-path="url(#fc-av-clip)"/>
+              <!-- ojos blancos -->
+              <circle cx="23" cy="22" r="3" fill="white"/>
+              <circle cx="33" cy="22" r="3" fill="white"/>
+              <!-- pupilas -->
+              <circle cx="23" cy="22.5" r="1.9" fill="#1a0800"/>
+              <circle cx="33" cy="22.5" r="1.9" fill="#1a0800"/>
+              <!-- brillo -->
+              <circle cx="23.9" cy="21.6" r=".85" fill="white"/>
+              <circle cx="33.9" cy="21.6" r=".85" fill="white"/>
+              <!-- sonrisa -->
+              <path d="M22.5 28 Q28 33.5 33.5 28" stroke="#bf7045" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <span>Tú</span>
         </div>
       </div>
+
+
     </div>
   </section>
+
 
   <!-- CTA FINAL -->
   <section class="cta-section">
