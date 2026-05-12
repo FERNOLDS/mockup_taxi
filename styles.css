@@ -640,11 +640,11 @@ ul { list-style: none; }
 .fc-diagram {
   position: relative;
   display: flex; align-items: center; justify-content: center;
-  gap: 48px;
+  gap: 80px;
   background: rgba(255,255,255,.018);
   border: 1px solid var(--border);
   border-radius: 24px;
-  padding: 56px 48px;
+  padding: 72px 64px;
   margin-top: 56px;
   overflow: visible;
 }
@@ -655,11 +655,11 @@ ul { list-style: none; }
 }
 
 /* ── Source column ── */
-.fc-col { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; position: relative; z-index: 2; align-items: center; }
+.fc-col { display: flex; flex-direction: column; gap: 14px; flex-shrink: 0; position: relative; z-index: 2; align-items: center; }
 
 /* Icon-only source buttons */
 .fc-src-icon {
-  width: 52px; height: 52px; border-radius: 14px;
+  width: 68px; height: 68px; border-radius: 18px;
   background: var(--bg-3); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; overflow: hidden; flex-shrink: 0; position: relative;
@@ -667,40 +667,40 @@ ul { list-style: none; }
 }
 .fc-src-icon { pointer-events: none; }
 .fc-logo-img {
-  width: 32px; height: 32px; object-fit: contain; border-radius: 5px; display: block;
+  width: 44px; height: 44px; object-fit: contain; border-radius: 6px; display: block;
 }
 .fc-logo-txt {
-  width: 32px; height: 32px; border-radius: 8px;
+  width: 44px; height: 44px; border-radius: 10px;
   display: none; align-items: center; justify-content: center;
-  font-size: .6rem; font-weight: 900; color: #fff; letter-spacing: -.3px;
+  font-size: .65rem; font-weight: 900; color: #fff; letter-spacing: -.3px;
 }
 
 
 /* ── Taxi box ── */
 .fc-taxi-box {
-  width: 270px; flex-shrink: 0;
+  width: 340px; flex-shrink: 0;
   background: var(--bg-3); border: 1.5px solid var(--border-y);
-  border-radius: 18px; padding: 20px 16px;
+  border-radius: 20px; padding: 26px 22px;
   position: relative; z-index: 2;
   box-shadow: 0 0 0 1px rgba(255,215,0,.04), inset 0 1px 0 rgba(255,255,255,.04);
 }
 .fc-taxi-header {
   display: flex; align-items: center; gap: 8px;
-  font-size: 1.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 18px;
+  font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 22px;
 }
 .fc-taxi-tag {
   margin-left: auto;
   background: var(--yellow-faint); border: 1px solid var(--border-y);
-  border-radius: 50px; padding: 3px 10px;
-  font-size: .67rem; font-weight: 700; color: var(--yellow); letter-spacing: .04em;
+  border-radius: 50px; padding: 4px 12px;
+  font-size: .7rem; font-weight: 700; color: var(--yellow); letter-spacing: .04em;
 }
 .fc-modules-wrap {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
 }
 .fc-mod {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 9px; padding: 11px 8px;
-  font-family: var(--font); font-size: .74rem; font-weight: 600; color: var(--text-2);
+  border-radius: 10px; padding: 14px 10px;
+  font-family: var(--font); font-size: .82rem; font-weight: 600; color: var(--text-2);
   text-align: center; line-height: 1.4; pointer-events: none;
 }
 
@@ -736,12 +736,12 @@ ul { list-style: none; }
   transform: translateX(-50%);
 }
 .fc-renata-ring--1 {
-  width: 78px; height: 78px; margin-top: -11px;
+  width: 100px; height: 100px; margin-top: -14px;
   border: 1.5px solid rgba(255,215,0,.38);
   animation: renataPulse1 2.4s ease-in-out infinite;
 }
 .fc-renata-ring--2 {
-  width: 106px; height: 106px; margin-top: -25px;
+  width: 136px; height: 136px; margin-top: -32px;
   border: 1px solid rgba(255,215,0,.16);
   animation: renataPulse2 2.4s ease-in-out infinite .9s;
 }
@@ -754,7 +754,7 @@ ul { list-style: none; }
   50%       { transform: translateX(-50%) scale(1.12); opacity: .6;  }
 }
 .fc-renata-core {
-  width: 56px; height: 56px; border-radius: 50%;
+  width: 72px; height: 72px; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,215,0,.18), rgba(255,215,0,.04) 60%, transparent);
   border: 1.5px solid rgba(255,215,0,.55);
   display: flex; align-items: center; justify-content: center;
@@ -776,13 +776,13 @@ ul { list-style: none; }
   flex-shrink: 0; position: relative; z-index: 2;
 }
 .fc-user-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 80px; height: 80px; border-radius: 50%;
   overflow: hidden; flex-shrink: 0;
   border: 2px solid rgba(255,215,0,.3);
   box-shadow: 0 0 20px rgba(120,80,255,.25);
 }
-.fc-user-avatar svg { display: block; width: 64px; height: 64px; }
-.fc-user-node span { font-size: .82rem; font-weight: 600; color: var(--text-2); }
+.fc-user-avatar svg { display: block; width: 80px; height: 80px; }
+.fc-user-node span { font-size: .88rem; font-weight: 600; color: var(--text-2); }
 
 /* ── Flow arrow labels ── */
 .fc-arrow-label {
