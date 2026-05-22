@@ -159,49 +159,9 @@ const chatObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.chat-body').forEach(el => chatObserver.observe(el));
 
 /* ════════════════════════════════════════════
-   MODULES — staggered card entrance
-════════════════════════════════════════════ */
-(function initModuleCards() {
-  const grid = document.querySelector('.modules-grid');
-  if (!grid) return;
-
-  const cards = Array.from(grid.querySelectorAll('.module-card'));
-
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const idx  = cards.indexOf(card);
-        setTimeout(() => card.classList.add('card-visible'), idx * 60);
-        cardObserver.unobserve(card);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-
-  cards.forEach(c => cardObserver.observe(c));
-})();
-
-/* ════════════════════════════════════════════
-   MODULES — spotlight follows mouse
-════════════════════════════════════════════ */
-(function initModulesSpotlight() {
-  const section    = document.querySelector('.modules');
-  const spotlight  = document.getElementById('modulesSpotlight');
-  if (!section || !spotlight) return;
-
-  section.addEventListener('mouseenter', () => { spotlight.style.opacity = '1'; });
-  section.addEventListener('mouseleave', () => { spotlight.style.opacity = '0'; });
-  section.addEventListener('mousemove', e => {
-    const rect = section.getBoundingClientRect();
-    spotlight.style.left = (e.clientX - rect.left) + 'px';
-    spotlight.style.top  = (e.clientY - rect.top)  + 'px';
-  }, { passive: true });
-})();
-
-/* ════════════════════════════════════════════
    FEATURE CARDS — tilt effect on hover
 ════════════════════════════════════════════ */
-document.querySelectorAll('.feature-card, .module-card').forEach(card => {
+document.querySelectorAll('.feature-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
@@ -289,35 +249,79 @@ if (navToggle && navLinks) {
     return p;
   }
 
-  /* ─── Animate packets ─── */
+  /* ─── SVG defs: glow filters ─── */
+  function addDefs() {
+    const defs = ns('defs');
+    defs.innerHTML = `
+      <filter id="fc-glow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="fc-glow-lg" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>`;
+    svg.appendChild(defs);
+  }
+
+  /* ─── Animate packets with trail ─── */
   const packets = [];
   let raf;
 
-  function addPacket(path, offset, speed, color) {
+  /*
+   * addPacket — crea un punto con cola de 1 trazo fantasma.
+   * totalLen se cachea para no recalcular en cada frame.
+   * trailOffset: fracción del recorrido que va el tail atrás (0.05 = 5%).
+   */
+  function addPacket(path, totalLen, offset, speed, color, r, trailOffset) {
+    const col = color || '#ffd700';
+    const rad = r || 4;
+
+    // Punto líder con glow
     const dot = ns('circle');
-    dot.setAttribute('r', '3.5');
-    dot.setAttribute('fill', color || '#ffd700');
+    dot.setAttribute('r', String(rad));
+    dot.setAttribute('fill', col);
+    dot.setAttribute('filter', 'url(#fc-glow)');
     svg.appendChild(dot);
-    packets.push({ path, dot, t: offset % 1, speed });
+
+    // Cola (sin filter, más chica y transparente)
+    const tail = ns('circle');
+    tail.setAttribute('r', String(rad * 0.55));
+    tail.setAttribute('fill', col);
+    svg.appendChild(tail);
+
+    packets.push({ path, dot, tail, t: offset % 1, speed, totalLen, trailOffset: trailOffset || 0.055 });
   }
 
   function tick() {
     packets.forEach(p => {
       p.t = (p.t + p.speed) % 1;
-      const len = p.path.getTotalLength();
-      const pt  = p.path.getPointAtLength(p.t * len);
+      const len  = p.totalLen;
+      const tTail = ((p.t - p.trailOffset) + 1) % 1;  // wrap correcto
+
+      const pt  = p.path.getPointAtLength(p.t    * len);
+      const pt2 = p.path.getPointAtLength(tTail  * len);
+
+      const baseOpacity = Math.sin(p.t * Math.PI);
+
       p.dot.setAttribute('cx', pt.x.toFixed(1));
       p.dot.setAttribute('cy', pt.y.toFixed(1));
-      p.dot.setAttribute('opacity', (Math.sin(p.t * Math.PI) * 0.9).toFixed(2));
+      p.dot.setAttribute('opacity', (baseOpacity * 0.95).toFixed(2));
+
+      p.tail.setAttribute('cx', pt2.x.toFixed(1));
+      p.tail.setAttribute('cy', pt2.y.toFixed(1));
+      p.tail.setAttribute('opacity', (baseOpacity * 0.3).toFixed(2));
     });
     raf = requestAnimationFrame(tick);
   }
 
-  /* ─── Draw paths (direct: sources → taxi → renata → user) ─── */
+  /* ─── Draw paths: sources → taxi → renata → user ─── */
   function drawLines() {
     if (raf) cancelAnimationFrame(raf);
     svg.innerHTML = '';
     packets.length = 0;
+
+    addDefs();
 
     const taxiEl   = document.getElementById('fcTaxiBox');
     const renataEl = document.getElementById('fcRenata');
@@ -328,38 +332,56 @@ if (navToggle && navLinks) {
     const tR  = rel(taxiEl);
     const rnR = rel(renataEl);
     const uR  = rel(userEl);
+    const n   = srcEls.length;
 
-    /* Sources → Taxi left edge (fan) */
+    /* Sources → Taxi (fan: entradas distribuidas verticalmente en el borde izq) */
     srcEls.forEach((src, i) => {
-      const sR   = rel(src);
-      const path = makePath(sR.r, sR.cy, tR.x, tR.cy,
-                            'rgba(255,215,0,.3)', 1.2, '4 6');
+      const sR  = rel(src);
+      // Distribuir puntos de entrada a lo largo del borde izquierdo del Taxi box
+      const fanY = tR.y + tR.h * (0.15 + (i / Math.max(n - 1, 1)) * 0.70);
+
+      // Línea de fondo (más ancha, muy tenue) para sensación de canal
+      const bg = makePath(sR.r, sR.cy, tR.x, fanY, 'rgba(255,215,0,.07)', 5, null);
+      svg.insertBefore(bg, svg.firstChild);
+
+      // Línea punteada principal
+      const path = makePath(sR.r, sR.cy, tR.x, fanY, 'rgba(255,215,0,.28)', 1.3, '4 5');
       svg.insertBefore(path, svg.firstChild);
-      addPacket(path, i * 0.2, 0.0007 + Math.random() * 0.0004);
+
+      const len   = path.getTotalLength();
+      const speed = 0.0045 + Math.random() * 0.002;
+      // 2 paquetes por fuente, desfasados
+      addPacket(path, len, i * 0.17,        speed, '#ffd700', 3.5, 0.06);
+      addPacket(path, len, i * 0.17 + 0.5,  speed, '#ffd700', 3.5, 0.06);
     });
 
-    /* Taxi right → Renata */
+    /* Taxi → Renata */
     {
-      const path = makePath(tR.r, tR.cy, rnR.cx - 28, rnR.cy,
-                            'rgba(255,215,0,.45)', 1.6, '5 5');
+      const bg   = makePath(tR.r, tR.cy, rnR.cx - 32, rnR.cy, 'rgba(255,215,0,.09)', 8, null);
+      svg.insertBefore(bg, svg.firstChild);
+      const path = makePath(tR.r, tR.cy, rnR.cx - 32, rnR.cy, 'rgba(255,215,0,.5)', 1.8, '5 4');
       svg.insertBefore(path, svg.firstChild);
-      addPacket(path, 0,   0.0010);
-      addPacket(path, 0.5, 0.0010);
+      const len = path.getTotalLength();
+      addPacket(path, len, 0,    0.007, '#ffd700', 4.5, 0.07);
+      addPacket(path, len, 0.33, 0.007, '#ffd700', 4.5, 0.07);
+      addPacket(path, len, 0.66, 0.007, '#ffd700', 4.5, 0.07);
     }
 
     /* Renata → User */
     {
-      const path = makePath(rnR.cx + 28, rnR.cy, uR.cx, uR.y,
-                            'rgba(255,215,0,.5)', 1.6, '5 5');
+      const bg   = makePath(rnR.cx + 32, rnR.cy, uR.cx, uR.y, 'rgba(255,215,0,.10)', 8, null);
+      svg.insertBefore(bg, svg.firstChild);
+      const path = makePath(rnR.cx + 32, rnR.cy, uR.cx, uR.y, 'rgba(255,215,0,.60)', 1.8, '5 4');
       svg.insertBefore(path, svg.firstChild);
-      addPacket(path, 0,   0.0012, '#ffe84d');
-      addPacket(path, 0.5, 0.0012, '#ffe84d');
+      const len = path.getTotalLength();
+      addPacket(path, len, 0,   0.008, '#ffe84d', 5, 0.06);
+      addPacket(path, len, 0.5, 0.008, '#ffe84d', 5, 0.06);
     }
 
     tick();
   }
 
-  /* Draw after reveal animation completes (~1s transition + 0.3s delay) */
+  /* Dibujar cuando el diagrama entra en vista */
   const visObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { setTimeout(drawLines, 1100); visObs.unobserve(e.target); }
@@ -367,7 +389,7 @@ if (navToggle && navLinks) {
   }, { threshold: 0.1 });
   visObs.observe(diagram);
 
-  /* Redraw on resize */
+  /* Redibujar en resize */
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
