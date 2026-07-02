@@ -89,10 +89,12 @@ ul { list-style: none; }
   max-width: 1160px; margin: 0 auto; padding: 0 24px;
   height: 100%; display: flex; align-items: center; gap: 40px;
 }
-.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; flex-shrink: 0; }
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; flex-shrink: 0; display: flex; align-items: center; gap: 9px; }
+.logo-icon { width: 28px; height: 28px; border-radius: 7px; display: block; flex-shrink: 0; }
 .logo-t { color: var(--yellow); }
 .logo-axi { color: var(--text); }
-.logo--sm { font-size: 1.25rem; }
+.logo--sm { font-size: 1.25rem; gap: 8px; }
+.logo--sm .logo-icon { width: 22px; height: 22px; border-radius: 6px; }
 .nav-links { display: flex; gap: 32px; flex: 1; }
 .nav-links a { color: var(--text-2); font-size: .9rem; font-weight: 500; transition: color var(--transition); }
 .nav-links a:hover { color: var(--text); }
@@ -574,7 +576,7 @@ ul { list-style: none; }
   0%, 100% { filter: drop-shadow(0 0 5px rgba(255,215,0,.35)); }
   50%       { filter: drop-shadow(0 0 16px rgba(255,215,0,.75)); }
 }
-.fc-brain-svg { animation: brainPulse 2.6s ease-in-out infinite; }
+.fc-renata-icon-svg { animation: brainPulse 2.6s ease-in-out infinite; }
 
 /* ── Renata badges ── */
 .fc-renata-badges {
@@ -702,3 +704,21 @@ ul { list-style: none; }
 .footer-bottom { border-top: 1px solid var(--border); padding: 20px 0; }
 .footer-bottom .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: .8rem; color: var(--text-3); }
 @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } .footer-links { gap: 32px; } }
+
+/* ═══════════════════════════════════════════════
+   STATIC / LEGAL PAGES
+═══════════════════════════════════════════════ */
+.page-header { padding: calc(var(--nav-h) + 90px) 0 56px; text-align: center; border-bottom: 1px solid var(--border); }
+.page-header h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+.page-header p { color: var(--text-3); font-size: .88rem; }
+.legal-content { padding: 64px 0 140px; }
+.legal-content .container { max-width: 780px; }
+.legal-content h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -.3px; margin: 40px 0 14px; }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { color: var(--text-2); margin-bottom: 16px; line-height: 1.8; }
+.legal-content ul { margin: 0 0 16px 0; }
+.legal-content li { color: var(--text-2); line-height: 1.8; padding-left: 20px; position: relative; margin-bottom: 8px; }
+.legal-content li::before { content: "—"; position: absolute; left: 0; color: var(--yellow); }
+.legal-content a { color: var(--yellow); text-decoration: underline; text-underline-offset: 2px; }
+.legal-content strong { color: var(--text); }
+.legal-content .btn { margin-top: 8px; }
