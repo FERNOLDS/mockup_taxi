@@ -288,6 +288,33 @@ ul { list-style: none; }
 .int-divider { width: 1px; height: 24px; background: var(--border); }
 
 /* ═══════════════════════════════════════════════
+   POWERED BY
+═══════════════════════════════════════════════ */
+.powered-by { background: var(--bg-2); padding: 120px 0; }
+.powered-logos { display: flex; align-items: stretch; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.powered-card {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--bg-3); border: 1.5px solid var(--border-y);
+  border-radius: var(--radius); padding: 28px 34px;
+  min-width: 320px;
+  box-shadow: 0 0 0 1px rgba(255,215,0,.04), inset 0 1px 0 rgba(255,255,255,.04);
+  transition: transform var(--transition), border-color var(--transition);
+}
+.powered-card:hover { transform: translateY(-3px); border-color: var(--yellow); }
+.powered-card-icon {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: var(--bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0; position: relative;
+}
+.powered-card-icon .fc-logo-img { width: 64px; height: 64px; }
+.powered-card-icon .fc-logo-txt { width: 64px; height: 64px; font-size: 1.4rem; }
+.powered-card-text { display: flex; flex-direction: column; gap: 4px; }
+.powered-card-text strong { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.powered-card-text span { font-size: .82rem; color: var(--text-3); }
+@media (max-width: 700px) { .powered-card { min-width: 100%; } }
+
+/* ═══════════════════════════════════════════════
    SECTION COMMONS
 ═══════════════════════════════════════════════ */
 .section-header { text-align: center; margin-bottom: 64px; }
